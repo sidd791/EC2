@@ -50,7 +50,7 @@ jobs:
       
         ssh -i id_rsa -o StrictHostKeyChecking=no $USER@$HOST << 'EOF'
           cd /new/EC2
-          git pull
+          git pull origin main
           pip install --upgrade pip 
           pip install -r requirements.txt
           python3 manage.py migrate
