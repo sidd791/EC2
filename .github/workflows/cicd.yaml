@@ -49,8 +49,9 @@ jobs:
         chmod 600 id_rsa  
       
         ssh -i id_rsa -o StrictHostKeyChecking=no $USER@$HOST << 'EOF'
-          cd /new/EC2
+          cd ~/new/EC2
           git pull origin main
+          source ../venv/bin/activate
           pip install --upgrade pip 
           pip install -r requirements.txt
           python3 manage.py migrate
