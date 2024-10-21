@@ -58,8 +58,8 @@ jobs:
           python3 manage.py collectstatic --noinput
           
           # Kill any existing runserver process if it's running
-          if pgrep -f "runserver" > /dev/null; then
-              pkill -f runserver
+          if lsof -t -i:8000 > /dev/null; then
+            kill -9 $(lsof -t -i:8000)
           fi
           
           nohup python3 manage.py runserver 0.0.0.0:8000 &  
